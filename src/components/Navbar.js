@@ -3,13 +3,13 @@ import './Navbar.css';
 import HeaderCardButton from './UI/HeaderCardButton';
 import pizzaimage from '../assets/pizza.jpg'
 
-function Navbar() {
+function Navbar(props) {
     return (
         <>
             <header className='header'>
                 <div className="header-container">
                     <h1>Pizza Project</h1>
-                    <HeaderCardButton />
+                    <HeaderCardButton onClick={props.onShowCart } /> {/* onclick is custom in this case */}
                 </div>
             </header>
             <div className="main-image">
