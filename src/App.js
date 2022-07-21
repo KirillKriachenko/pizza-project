@@ -4,26 +4,27 @@ import Navbar from './components/Navbar';
 import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import { useState } from 'react';
+import CartProvider from './store/CartProvider';
 
 function App() {
   const [cartIsShawn, setCartIsShawn] = useState(false);
 
-  const showCardHandler = () => {
+  const showCartHandler = () => {
     setCartIsShawn(true);
   }
 
-  const hideCardHandler = () => {
+  const hideCartHandler = () => {
     setCartIsShawn(false);
   }
 
   return (
-    <>
-      {cartIsShawn && <Cart onClose={hideCardHandler} />}
-      <Navbar onShowCart={showCardHandler} />
+    <CartProvider>
+      {cartIsShawn && <Cart onClose={hideCartHandler} />}
+      <Navbar onShowCart={showCartHandler} />
       <main>
         <Meals />
       </main>
-    </>
+    </CartProvider>
   );
 }
 
